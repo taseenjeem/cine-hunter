@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { getImageURL } from "../utils/cine-utility";
 import Rating from "./Rating";
 import MovieDetailsModal from "./MovieDetailsModal";
+import { MovieContext } from "../context";
 
 const MovieCard = ({ movie }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
+
+  const { cartData, setCartData } = useContext(MovieContext);
 
   const handleModalClose = () => {
     setSelectedMovie(null);
@@ -15,6 +18,18 @@ const MovieCard = ({ movie }) => {
   const handleMovieSelection = (movie) => {
     setSelectedMovie(movie);
     setShowModal(true);
+  };
+
+  const handleAddToCart = (event, movie) => {
+    event.stopPropagation();
+
+    const sameMovie = cartData.find((item) => item.id === movie.id);
+
+    if (!sameMovie) {
+      setCartData([...cartData, movie]);
+    } else {
+      alert(`The movie, ${movie.title} has been already added!`);
+    }
   };
 
   return (
@@ -39,8 +54,8 @@ const MovieCard = ({ movie }) => {
               <Rating value={movie.rating} />
             </div>
             <a
-              className="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
-              href="#"
+              className="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm cursor-pointer"
+              onClick={(event) => handleAddToCart(event, movie)}
             >
               <img src="./assets/tag.svg" alt="" />
               <span>${movie.price} | Add to Cart</span>
