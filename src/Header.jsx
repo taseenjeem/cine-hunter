@@ -1,10 +1,15 @@
+import bellIcon from "./assets/ring.svg";
+import moonIcon from "./assets/icons/moon.svg";
+import logo from "./assets/logo.svg";
+import cartIcon from "./assets/shopping-cart.svg";
+
 const Header = () => {
   return (
     <>
       <header>
         <nav className="container flex items-center justify-between space-x-10 py-6">
           <a href="index.html">
-            <img src="./assets/logo.svg" width={139} height={26} alt="" />
+            <img src={logo} width={139} height={26} alt="" />
           </a>
           <ul className="flex items-center space-x-5">
             <li>
@@ -12,7 +17,7 @@ const Header = () => {
                 className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
                 href="#"
               >
-                <img src="./assets/ring.svg" width={24} height={24} alt="" />
+                <img src={bellIcon} width={24} height={24} alt="" />
               </a>
             </li>
             <li>
@@ -20,12 +25,7 @@ const Header = () => {
                 className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
                 href="#"
               >
-                <img
-                  src="./assets/icons/moon.svg"
-                  width={24}
-                  height={24}
-                  alt=""
-                />
+                <img src={moonIcon} width={24} height={24} alt="" />
               </a>
             </li>
             <li>
@@ -33,12 +33,7 @@ const Header = () => {
                 className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
                 href="#"
               >
-                <img
-                  src="./assets/shopping-cart.svg"
-                  width={24}
-                  height={24}
-                  alt=""
-                />
+                <img src={cartIcon} width={24} height={24} alt="" />
               </a>
             </li>
           </ul>
