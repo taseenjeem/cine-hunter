@@ -1,6 +1,6 @@
 import { getImageURL } from "../utils/cine-utility";
 
-const MovieDetailsModal = ({ movie, onModalClose }) => {
+const MovieDetailsModal = ({ movie, onModalClose, onAddToCart }) => {
   return (
     <>
       <section className="dark:bg-body bg-white font-[Sora] dark:text-white text-dark">
@@ -30,6 +30,7 @@ const MovieDetailsModal = ({ movie, onModalClose }) => {
                   <a
                     className="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
                     href="#"
+                    onClick={(event) => onAddToCart(event, movie)}
                   >
                     <img src="./assets/tag.svg" alt="" />
                     <span>${movie.price} | Add to Cart</span>
